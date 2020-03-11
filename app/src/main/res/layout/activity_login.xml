@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.mvvmdemoapp.logindemo.UserViewModel" />
+
+        <variable
+            name="userLoginEvent"
+            type="com.example.mvvmdemoapp.logindemo.UserLoginClick" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="@string/login_demo"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint='@{viewModel.emailHint}'
+            android:text='@={viewModel.email}' />
+
+        <EditText
+            android:id="@+id/edPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint='@{viewModel.passwordHint}'
+            android:text='@={viewModel.password}' />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:onClick='@{()->userLoginEvent.onButtonClick()}'
+                android:paddingStart="50dp"
+                android:paddingEnd="50dp"
+                android:text="@string/login"
+                android:textAllCaps="false" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="20dp"
+                android:layout_toEndOf="@+id/btnLogin"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>
